@@ -1,0 +1,23 @@
+.active {
+    background-color: aquamarine;
+}
+
+.header {
+    padding: 40px;
+    background-color: lightblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h2 {
+    font-weight: bolder;
+}
+
+.header a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
