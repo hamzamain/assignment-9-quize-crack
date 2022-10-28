@@ -1,11 +1,20 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import Topic from "../Topic/Topic";
+import "./Topics.css";
 
 const Topics = () => {
+  const topics = useLoaderData().data;
+  console.log(topics);
   return (
-    <div className="d-flex container my-5">
+    <div className="width-85 my-5 topics">
       <Navbar></Navbar>
-      <h1>this is topics component</h1>
+      <div className="topic-container">
+        {topics.map((topic) => (
+          <Topic key={topic.id} topic={topic}></Topic>
+        ))}
+      </div>
     </div>
   );
 };

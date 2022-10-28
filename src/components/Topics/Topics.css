@@ -1,0 +1,16 @@
+.width-85 {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.topics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.topic-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+}

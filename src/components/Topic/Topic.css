@@ -1,0 +1,11 @@
+.topic {
+    /* border: 1px solid gray; */
+    border-radius: 10px;
+}
+
+.name-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
