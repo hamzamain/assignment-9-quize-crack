@@ -1,5 +1,5 @@
-.width-85 {
-    width: 85%;
+.width {
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -10,7 +10,7 @@
 }
 
 .topic-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

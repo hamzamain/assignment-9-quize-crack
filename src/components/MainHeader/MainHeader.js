@@ -1,9 +1,10 @@
 import React from "react";
-import "./Navbar.css";
+import "./MainHeader.css";
 
 const imgUrl =
   "https://thumbs.dreamstime.com/b/question-mark-icons-blue-background-vertical-image-not-having-opinion-being-confused-question-mark-icons-blue-234520957.jpg";
-const Navbar = () => {
+
+const MainHeader = () => {
   return (
     <div className="position-relative">
       <img src={imgUrl} className="w-100 rounded " alt="" />
@@ -15,4 +16,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default MainHeader;

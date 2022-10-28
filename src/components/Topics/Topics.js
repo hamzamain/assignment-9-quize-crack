@@ -1,15 +1,20 @@
 import React from "react";
+import { createContext } from "react";
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import Navbar from "../Navbar/Navbar";
+import MainHeader from "../MainHeader/MainHeader";
 import Topic from "../Topic/Topic";
 import "./Topics.css";
 
 const Topics = () => {
   const topics = useLoaderData().data;
+  // const [anser, serAnser] = useState([]);
+
   console.log(topics);
   return (
-    <div className="width-85 my-5 topics">
-      <Navbar></Navbar>
+    <div className="width my-5 topics">
+      <MainHeader></MainHeader>
+
       <div className="topic-container">
         {topics.map((topic) => (
           <Topic key={topic.id} topic={topic}></Topic>
