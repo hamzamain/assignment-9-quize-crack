@@ -1,0 +1,13 @@
+.hover:hover {
+    background-color: rgb(246, 195, 195);
+}
+
+.true {
+    background-color: green;
+    color: wheat;
+    border: none;
+}
+
+.false {
+    background-color: rgb(247, 165, 165);
+}

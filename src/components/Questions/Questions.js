@@ -3,18 +3,24 @@ import Option from "../Option/Option";
 import ShowTst from "../ShowQuiz/ShowTst/ShowTst";
 import "./Questions.css";
 
-const Questions = ({ qn }) => {
-  const { options, question, id } = qn;
-
+const Questions = ({ eachQuestion, handlerChecker, forToast }) => {
+  // console.log(eachQuestion);
+  const { options, question, correctAnswer } = eachQuestion;
   return (
-    <div className="border rounded shadow-lg mb-5 container p-5">
-      {question}
-      <div className="options">
-        {options.map((option) => (
-          <Option option={option} id={id} question={question}></Option>
+    <div className="shadow-lg width mb-5 p-5 rounded">
+      <p className="text-danger">{question}</p>
+      <div className="options text-danger">
+        {options.map((option, idx) => (
+          <Option
+            key={idx}
+            option={option}
+            correctAnswer={correctAnswer}
+            handlerChecker={handlerChecker}
+            eachQuestion={eachQuestion}
+          ></Option>
         ))}
       </div>
-      <ShowTst></ShowTst>
+      <ShowTst forToast={forToast}></ShowTst>
     </div>
   );
 };

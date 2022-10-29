@@ -1,22 +1,21 @@
-import React from "react";
-import { useContext } from "react";
-import { QuizContext, ToastContext } from "../ShowQuiz/ShowQuiz";
+import React, { useContext } from "react";
+import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import { ToastContext } from "../ShowQuiz/ShowQuiz";
+import "./Options.css";
 
-const Option = ({ option, id, question }) => {
-  const [quizs, handlerChecker] = useContext(QuizContext);
-  const [showA, setShowA, toggleShowA] = useContext(ToastContext);
-  // const { questions } = quizs;
-
+const Option = ({ option, correctAnswer, handlerChecker, eachQuestion }) => {
+  const [show, setShow] = useContext(ToastContext);
   return (
     <button
-      onClick={() => {
-        return [toggleShowA, handlerChecker(id)];
+      className={`border border-danger m-3 rounded p-3 hover `}
+      onClick={(event) => {
+        return [
+          handlerChecker(event, correctAnswer, eachQuestion, option),
+          setShow(true),
+        ];
       }}
-      className="border border-warning rounded p-2"
     >
-      {/* <input type="radio" value={option} id={id} name={question} />
-
-      <label for={id}>{option}</label> */}
       {option}
     </button>
   );

@@ -1,57 +1,65 @@
-import React, { createContext, useState } from "react";
+import React, { useState } from "react";
+import { createContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import Questions from "../Questions/Questions";
 import ShowTst from "./ShowTst/ShowTst";
 
-export const QuizContext = createContext({});
 export const ToastContext = createContext([]);
-
 const ShowQuiz = () => {
-  const quizs = useLoaderData().data;
+  const lodedData = useLoaderData().data;
+  const { name, questions, total } = lodedData;
 
-  const [showA, setShowA] = useState(true);
-  const toggleShowA = () => setShowA(!showA);
-  const [answers, setAnswers] = useState([]);
+  const [answer, setAnswer] = useState([]);
+  const [show, setShow] = useState(false);
+  const [forToast, setForToast] = useState([]);
 
-  // console.log(quizs);
-  console.log(answers);
-  const { questions, name, total } = quizs;
+  const handlerChecker = (event, correctAnswer, eachQuestion, option) => {
+    const showToToast = [correctAnswer, eachQuestion, option];
+    setForToast(showToToast);
+    const textValue = event.currentTarget.innerText;
 
-  const handlerChecker = (id) => {
-    const singleOption = questions.find((question) => question.id === id);
-
-    const exist = answers.find((ques) => ques.id === singleOption.id);
-
-    if (exist) {
-      alert("This answer has taken");
+    if (textValue === correctAnswer) {
+      event.currentTarget.classList.toggle("true");
+      alert("answer is true");
     } else {
-      const newAnswers = [...answers, singleOption];
-      setAnswers(newAnswers);
+      event.currentTarget.classList.toggle("false");
     }
 
-    return singleOption;
+    const ans = { option: option, correctAnswer: correctAnswer };
+    setAnswer(ans);
+
+    // const exists = answer.find(
+    //   (answer) => answer.question.id === question.question.id
+    // );
+
+    // if (exists) {
+    //   alert("alredy answred");
+    // } else {
+    //   const newQuestion = [...answer, question];
+    //   setAnswer(newQuestion);
+    // }
+    return showToToast;
   };
 
-  const toastData = handlerChecker();
-  console.log(toastData);
-
   return (
-    <QuizContext.Provider value={[quizs, handlerChecker]}>
-      <ToastContext.Provider value={[showA, setShowA, toggleShowA]}>
-        <div>
-          <h1>{name}</h1>
-          <p>
-            <small>
-              <b>Total QN: {total}</b>
-            </small>
-          </p>
-          {questions.map((qn) => (
-            <Questions key={qn.id} qn={qn}></Questions>
+    <ToastContext.Provider value={[show, setShow]}>
+      <div>
+        <h1>Quiz of {name}</h1>
+        <p>
+          <b>Total Quiz's: {total}</b>
+        </p>
+        <div className="single-question">
+          {questions.map((eachQuestion) => (
+            <Questions
+              key={eachQuestion.id}
+              eachQuestion={eachQuestion}
+              handlerChecker={handlerChecker}
+              forToast={forToast}
+            ></Questions>
           ))}
         </div>
-        <ShowTst></ShowTst>
-      </ToastContext.Provider>
-    </QuizContext.Provider>
+      </div>
+    </ToastContext.Provider>
   );
 };
 
