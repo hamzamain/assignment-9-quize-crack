@@ -9,8 +9,9 @@ const Option = ({ option, id, question }) => {
 
   return (
     <button
-      // onClick={() => handlerChecker(id)}
-      onClick={toggleShowA}
+      onClick={() => {
+        return [toggleShowA, handlerChecker(id)];
+      }}
       className="border border-warning rounded p-2"
     >
       {/* <input type="radio" value={option} id={id} name={question} />

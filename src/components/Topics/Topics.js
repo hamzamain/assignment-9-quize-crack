@@ -10,7 +10,7 @@ const Topics = () => {
   const topics = useLoaderData().data;
   // const [anser, serAnser] = useState([]);
 
-  console.log(topics);
+  // console.log(topics);
   return (
     <div className="width my-5 topics">
       <MainHeader></MainHeader>

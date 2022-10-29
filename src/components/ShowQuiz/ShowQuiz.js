@@ -11,15 +11,29 @@ const ShowQuiz = () => {
 
   const [showA, setShowA] = useState(true);
   const toggleShowA = () => setShowA(!showA);
+  const [answers, setAnswers] = useState([]);
 
-  console.log(quizs);
+  // console.log(quizs);
+  console.log(answers);
   const { questions, name, total } = quizs;
 
   const handlerChecker = (id) => {
-    console.log(id, quizs);
     const singleOption = questions.find((question) => question.id === id);
+
+    const exist = answers.find((ques) => ques.id === singleOption.id);
+
+    if (exist) {
+      alert("This answer has taken");
+    } else {
+      const newAnswers = [...answers, singleOption];
+      setAnswers(newAnswers);
+    }
+
     return singleOption;
   };
+
+  const toastData = handlerChecker();
+  console.log(toastData);
 
   return (
     <QuizContext.Provider value={[quizs, handlerChecker]}>
