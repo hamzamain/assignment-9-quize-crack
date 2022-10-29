@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
+import { topicsData } from "../Loder/TopicsData";
 import Blogs from "./Blogs/Blogs";
 import ShowQuiz from "./ShowQuiz/ShowQuiz";
 import Statistics from "./Statistics/Statistics";
@@ -13,13 +14,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => {
-          return fetch("https://openapi.programming-hero.com/api/quiz");
-        },
+        loader: () => topicsData(),
         element: <Topics></Topics>,
       },
       {
         path: "/statistics",
+        loader: () => topicsData(),
         element: <Statistics></Statistics>,
       },
       {

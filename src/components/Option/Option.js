@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-import { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
 import { ToastContext } from "../ShowQuiz/ShowQuiz";
 import "./Options.css";
 

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -9,7 +8,6 @@ import { ToastContext } from "../ShowQuiz";
 function ShowTst({ forToast }) {
   const [show, setShow] = useContext(ToastContext);
   const [correctAnswer, eachQuestion, option] = forToast;
-  console.log(eachQuestion);
 
   return (
     <Row>

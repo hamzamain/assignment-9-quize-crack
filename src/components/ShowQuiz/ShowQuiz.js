@@ -25,9 +25,6 @@ const ShowQuiz = () => {
       event.currentTarget.classList.toggle("false");
     }
 
-    const ans = { option: option, correctAnswer: correctAnswer };
-    setAnswer(ans);
-
     // const exists = answer.find(
     //   (answer) => answer.question.id === question.question.id
     // );
@@ -38,7 +35,6 @@ const ShowQuiz = () => {
     //   const newQuestion = [...answer, question];
     //   setAnswer(newQuestion);
     // }
-    return showToToast;
   };
 
   return (
